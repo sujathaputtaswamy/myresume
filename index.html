@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Sujatha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #666;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover::before {
+            transform: scaleX(1);
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: rgba(102, 126, 234, 0.05);
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        li:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: #667eea;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info .highlight {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .projects-list li {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-left: 4px solid #764ba2;
+            position: relative;
+        }
+
+        .projects-list li::before {
+            content: '🚀';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            section {
+                padding: 25px;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to My Portfolio</h1>
+            <p>I'm Sujatha, a Computer Science Engineering Student at Malnad College of Engineering (Graduating 2026)</p>
+        </header>
+
+        <div class="section-grid">
+            <section class="full-width">
+                <h2>About Me</h2>
+                <p>Hello! I'm Sujatha, currently pursuing my B.E. in Computer Science Engineering at Malnad College of Engineering, Hassan. I'm passionate about technology, coding, and building meaningful projects. Alongside academics, I actively participate in sports and love taking on challenges both inside and outside the classroom.</p>
+            </section>
+
+            <section>
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">Python, Java, C++</div>
+                    <div class="skill-item">Web Development</div>
+                    <div class="skill-item">Machine Learning & AI</div>
+                    <div class="skill-item">Database Management</div>
+                    <div class="skill-item">Version Control</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>My Education</h2>
+                <ul>
+                    <li><span class="highlight">10th Grade:</span> 80% — Poornaprajna Education Centre, Belur</li>
+                    <li><span class="highlight">12th Grade:</span> 85% — Masters PU College</li>
+                    <li><span class="highlight">Current CGPA:</span> 8.7</li>
+                    <li><span class="highlight">Degree:</span> B.E. in Computer Science Engineering (Expected Graduation: 2026)</li>
+                    <li><span class="highlight">College:</span> Malnad College of Engineering, Hassan</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>My Projects</h2>
+                <ul class="projects-list">
+                    <li>Automated Resume Screening System using AI</li>
+                    <li>Smart Inventory Management System with Voice and Visual Billing</li>
+                    <li>AI Chatbot for College Helpdesk</li>
+                </ul>
+            </section>
+
+            <section class="full-width">
+                <h2>Technical Background</h2>
+                <p>I have a strong technical background with hands-on experience in software development, machine learning projects, and web application development. I'm comfortable working with both frontend and backend technologies and have actively contributed to team projects during my undergraduate studies. I'm passionate about learning new tools and technologies and solving real-world problems through innovation.</p>
+            </section>
+
+            <section>
+                <h2>Sports</h2>
+                <p>I'm a dedicated sports player who loves competing in various college and intercollegiate tournaments. Sports have helped me build teamwork, discipline, and leadership skills, which I apply not just on the field but also in my academic and project work.</p>
+            </section>
+
+            <section>
+                <h2>Contact Me</h2>
+                <div class="contact-info">
+                    <p><span class="highlight">Email:</span> sujathaputtaswamy0@gmail.com</p>
+                    <p><span class="highlight">Phone:</span> +91-XXXXXXXXXX</p>
+                    <p><span class="highlight">Location:</span> Hassan, Karnataka, India</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
